@@ -53,7 +53,7 @@ const credits = ((num) => {
     if (credits > 0) console.log(`playing game, ${credits} credit(s) remaining`)
     if (credits <= 0) console.log(`not enought credits`)
   }
-})(3) // initial credits value: 3
+})(3) // 
 
 credits() // playing game, 2 credit(s) remaining
 credits() // playing game, 2 credit(s) remaining
