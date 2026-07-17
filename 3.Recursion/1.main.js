@@ -24,7 +24,7 @@ function recurToTen(num = 1) {
   recurToTen(num)
 }
 
-recurToTen()
+// recurToTen()
 
 // With great power comes greate responsability
 // Reasons to use (not abuse) recursion
@@ -39,6 +39,8 @@ recurToTen()
 
 // The standart example: The Fibonacci Sequence
 // 0, 1, 1, 2, 3, 5, 8, 13, 21, etc
+
+// No recursion
 function fibonacci(num, array = [0, 1]) {
   while (num > 2) {
     const [nextToLast, last] = array.slice(-2)
@@ -49,29 +51,44 @@ function fibonacci(num, array = [0, 1]) {
   return array
 }
 
-console.log(fibonacci(12))
+fibonacci(12)
 
+// With recursion
 function recursionFibonacci(num, array = [0, 1]) {
+
+  // This is called the reason to exit the loop
   if (num <= 2) return array
   const [nextToLast, last] = array.slice(-2)
+
   return recursionFibonacci(num - 1, [...array, nextToLast + last])
 }
 
-console.log(recursionFibonacci(12))
+recursionFibonacci(12)
 
 // What number is in the nth position of the fibonacci sequence?
+function fibonacciPos(position) {
 
-// Without recursion
-function fibonacciPos(pos) {
-  if (pos <= 1) return pos
-  const seq = [0, 1]
+  if (position <= 1) return position
+  const sequence = [0, 1]
   
-  for (let i = 2; i <= pos; i++) {
-    const [nextToLast, last] = seq.slice(-2)
-    seq.push(nextToLast + last)
+  for (let i = 2; i <= position; i++) {
+    const [nextToLast, last] = sequence.slice(-2)
+    sequence.push(nextToLast + last)
   }
 
-  return seq[pos]
+  return sequence[position]
 }
 
-console.log(fibonacciPos(8))
+console.log(fibonacciPos(12)) // 144
+
+// With recursion
+function fibonacciPosRec(pos) {
+  if (pos < 2) return pos
+  return fibonacciPosRec(pos - 1) + fibonacciPosRec(pos -2)
+}
+
+console.log(fibonacciPosRec(12)) // 144
+
+// The same recursive fibonacci sequence function can be written only in one line of code
+const fibPosRecOneLine = pos => pos < 2 ? pos : fibPosRecOneLine(pos - 1) + fibPosRecOneLine(pos - 2)
+console.log(fibPosRecOneLine(12)) // 144
