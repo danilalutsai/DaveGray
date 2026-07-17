@@ -1,0 +1,46 @@
+// Javascript data types: Primitive, structural
+// Primitive: string, number, undefined, null, boolean, bigInt, symbol
+// Structural (non primitive): array, object, linked list, Map, Set, function, Weak map, Date
+
+let x = 2
+let y = x
+y += 1
+console.log(y) // 3
+console.log(x) // 2
+
+let xArray = [1, 2, 3, 4]
+let yArray = xArray
+yArray.push(5)
+
+console.log(xArray.splice(2, 2)) // [3, 4]
+console.log(xArray.slice(1, 2)) // [2]
+console.log(yArray) // [1, 2, 5]
+console.log(xArray) // [1, 2, 5]
+
+// Mutable vs Immutable
+let firstname = "Danila"
+firstname = "Nikita"
+console.log(firstname)
+
+xArray[0] = 10
+console.log(xArray) // [10, 2, 5]
+console.log(yArray) // [10, 2, 5]
+
+// Pure functions require you to avoid mutating the data
+// Impure function that mutates the data outside the function scope
+function addToStoreHistory(array, score) {
+  array.push(score)
+  return array
+}
+
+const scoreArray = [44, 23, 32]
+console.log(addToStoreHistory(scoreArray, 12)) // [44, 23, 32, 12]
+console.log(scoreArray) // [44, 23, 32, 12]
+
+// This mutates the original array
+// This is considered to be a side-effect
+
+// Const doesn't make the array or object immutable
+// We need to modify our function so it does not mutate the original data
+
+// Shallow copy vs Deep copy
